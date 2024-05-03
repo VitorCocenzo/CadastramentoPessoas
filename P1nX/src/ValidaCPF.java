@@ -22,16 +22,6 @@ public class ValidaCPF {
         }else{
             return false;
         }
-        
-
-        /*for(int i=0; i<CPF.length(); i++){
-            if(CPF.charAt(i) != '.' && CPF.charAt(i) != ' ' && CPF.charAt(i) != '/' && CPF.charAt(i) != '-' && !Character.isDigit(CPF.charAt(i))){
-                return false;
-            }else if(Character.isDigit(CPF.charAt(i))){
-                CPFConvertido += CPF.charAt(i);
-            }
-        }*/
-
 
         // considera-se erro CPF"s formados por uma sequencia de numeros iguais
         if (CPFConvertido.equals("00000000000") ||
@@ -90,10 +80,10 @@ public class ValidaCPF {
         public static String imprimeCPF(String CPF) {
             String CPFConvertido = "";
 
-        for(int i=0; i<CPF.length(); i++)
-            if(Character.isDigit(CPF.charAt(i)))
-                CPFConvertido += CPF.charAt(i);
-
+            for(int i=0; i<CPF.length(); i++){
+                if(Character.isDigit(CPF.charAt(i)))
+                    CPFConvertido += CPF.charAt(i);
+            }
             return(CPFConvertido.substring(0, 3) + "." + CPFConvertido.substring(3, 6) + "." +
             CPFConvertido.substring(6, 9) + "-" + CPFConvertido.substring(9, 11));
         }

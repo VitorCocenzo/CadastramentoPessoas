@@ -25,29 +25,40 @@ public class Pessoa {
 
     }
 
-    public Pessoa(String nome, String sobreNome, int dia, int mes, int ano, long numCPF, float peso, float alura){
+    public Pessoa(String nome, String sobreNome, int dia, int mes, int ano, long numCPF, float peso, float altura){
         if(!ValidaData.isAno(ano) || !ValidaData.isDia(dia) || !ValidaData.isMes(mes)){
             throw new IllegalArgumentException("Data invalida");
         }
 
         if(!ValidaCPF.isCPF(Long.toString(numCPF))){
-            throw new IllegalArgumentException("CPF invalido");
+            throw new IllegalArgumentException("CPF invalidado");
         }
 
         numPessoas++;
         this.setNome(nome);
         this.setSobreNome(sobreNome);
-        this.setAltura(alura);
-        this.setPeso(peso);
+
+        if(altura<2.8 && altura>=0.5){
+            this.setAltura(altura);
+        }else{
+            throw new IllegalArgumentException("Altura invalida.");
+        }
+
+        if(peso<400 && peso>=5){
+            this.setPeso(peso);
+        }else{
+            throw new IllegalArgumentException("Peso invalido");
+        }
+
         this.setNumCPF(numCPF);
         this.dataNasc = new GregorianCalendar(ano, mes-1, dia);
 
-        try{
-            //this.dataNasc = new GregorianCalendar(ano, mes-1, dia);
+        /*try{
+            this.dataNasc = new GregorianCalendar(ano, mes-1, dia);
             dataNasc.setLenient(false);
         }catch(IllegalArgumentException e){
             System.out.println("Data invalida");
-            }
+            }*/
     }
 
     public static int numPessoas(){
@@ -104,8 +115,9 @@ public class Pessoa {
 
     @Override
     public String toString() {
-        return "Pessoa [nome=" + nome + ", sobreNome=" + sobreNome + ", dataNasc=" + dataNasc.get(GregorianCalendar.DAY_OF_MONTH)+ "/" + 
-        (dataNasc.get(GregorianCalendar.MONTH)+1)+"/"+ dataNasc.get(GregorianCalendar.YEAR) + ", numCPF=" + numCPF + ", peso=" + peso + 
-        ", altura=" + altura + "]";
-    }  
+        return "--------------------------\n Pessoa [Nome=" + nome + ", Sobrenome=" + sobreNome + "\n         DataNasc=" + dataNasc.get(GregorianCalendar.DAY_OF_MONTH)+ "/" + 
+        (dataNasc.get(GregorianCalendar.MONTH)+1)+"/"+ dataNasc.get(GregorianCalendar.YEAR) + "\n         NumCPF=" + numCPF + "\n         Peso=" + peso + "Kg" +
+        "\n         Altura=" + altura + "m";
+    }
+    
 }

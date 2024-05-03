@@ -53,7 +53,7 @@ public class ValidaData {
     }
 
     public static boolean isAno(int ano) {
-        if(ano<(dataAtual.get(GregorianCalendar.YEAR)-120)){
+        if(ano<(dataAtual.get(GregorianCalendar.YEAR)-120) || ano>dataAtual.get(GregorianCalendar.YEAR)){
             return false;
         }
         return ano >= 0;

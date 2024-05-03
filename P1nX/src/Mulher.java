@@ -37,8 +37,8 @@ public class Mulher extends Pessoa {
         
     }
 
-    public Mulher(String nome, String sobreNome, int dia, int mes, int ano, long CPF, float peso, float alura) {
-        super(nome, sobreNome, dia, mes, ano, CPF, peso, alura);
+    public Mulher(String nome, String sobreNome, int dia, int mes, int ano, long CPF, float peso, float altura) {
+        super(nome, sobreNome, dia, mes, ano, CPF, peso, altura);
 
         if(!ValidaData.isDataValida(dia, mes, ano)){
             throw new IllegalArgumentException("Data invalida");
@@ -78,6 +78,6 @@ public class Mulher extends Pessoa {
 
     @Override
     public String toString() {
-        return super.toString() + " Mulher [Genero=" + genero + ", Idade=" + calcularIdade() + "]";
+        return super.toString() + "\n         Genero=" + genero + "\n         Idade=" + calcularIdade() + "]";
     }
 }
